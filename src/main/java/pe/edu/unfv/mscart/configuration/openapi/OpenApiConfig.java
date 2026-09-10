@@ -1,0 +1,34 @@
+package pe.edu.unfv.mscart.configuration.openapi;
+
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.Info;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class OpenApiConfig {
+
+    @Bean
+    public OpenAPI createOpenApi(
+            @Value("${springdoc.title}") String title,
+            @Value("${springdoc.description}") String description,
+            @Value("${springdoc.version}") String version,
+            @Value("${springdoc.contact-name}") String contactName,
+            @Value("${springdoc.contact-email}") String contactEmail,
+            @Value("${springdoc.contact-url}") String contactUrl
+    ){
+        var contact = new Contact();
+        contact.setName(contactName);
+        contact.setEmail(contactEmail);
+        contact.setUrl(contactUrl);
+        return new OpenAPI()
+                .info(new Info()
+                        .title(title)
+                        .description(description)
+                        .version(version)
+                        .contact(contact));
+    }
+}
