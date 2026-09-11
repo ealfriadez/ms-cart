@@ -6,7 +6,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import org.mapstruct.factory.Mappers;
 
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -71,9 +70,9 @@ public class CartServiceTest {
         CartResponseDto cartResponseDto = cartService.findByCustomerId(1L);
         assertEquals(1L, cartResponseDto.getCustomerId());
         assertEquals(2, cartResponseDto.getItems().size());
-        assertEquals(3L, cartResponseDto.getItems().get(0).getProductId());
-        assertEquals("Teclado", cartResponseDto.getItems().get(0).getName());
-        assertEquals(BigDecimal.valueOf(300), cartResponseDto.getItems().get(0).getPrice());
-        assertEquals(3, cartResponseDto.getItems().get(0).getQuantity());
+        assertEquals(3L, cartResponseDto.getItems().getFirst().getProductId());
+        assertEquals("Teclado", cartResponseDto.getItems().getFirst().getName());
+        assertEquals(BigDecimal.valueOf(300), cartResponseDto.getItems().getFirst().getPrice());
+        assertEquals(3, cartResponseDto.getItems().getFirst().getQuantity());
     }
 }
