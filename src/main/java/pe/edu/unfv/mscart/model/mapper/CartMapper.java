@@ -31,10 +31,11 @@ public interface CartMapper {
 
     @Named("entityToResponseForItems")
     default List<CartItemResponseDto> entityToResponseForItems(List<CartItemEntity> items) {
-        return items.stream().map(p -> entityToResponse(p)).collect(Collectors.toList());
+        return items.stream().map(this::entityToResponse).collect(Collectors.toList());
     }
 
-    @Mapping(source = "response.id", target = "id")
+    @Mapping(target = "id", ignore = true) // Ignora el ID autogenerado de la entidad CartItemEntity
+    @Mapping(source = "response.id", target = "productId")
     @Mapping(source = "response.name", target = "name")
     @Mapping(source = "response.price", target = "price")
     @Mapping(source = "quantity", target = "quantity")

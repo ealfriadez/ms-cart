@@ -42,7 +42,7 @@ public class CartService {
 
         cartRequestDto.getItems().forEach(item -> {
             Optional<CartItemEntity> cartItemEntityOptional = cartEntity.getItems().stream().filter(p -> p.getProductId() == item.getProductId()).findFirst();
-            if (cartItemEntityOptional.isPresent()) {
+            if (!cartItemEntityOptional.isPresent()) {
                 ProductResponseDto product = productService.findById(item.getProductId());
                 if (product == null) {
                     throw new ResourceNotFoundException("Product not found with id: " +  item.getProductId());
