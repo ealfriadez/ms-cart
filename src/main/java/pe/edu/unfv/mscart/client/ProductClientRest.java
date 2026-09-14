@@ -7,7 +7,9 @@ import pe.edu.unfv.mscart.model.dto.ProductResponseDto;
 
 import java.util.List;
 
-@FeignClient(name = "ms-product", url = "http://localhost:8001", path = "/v1")
+@FeignClient(name = "ms-product"
+        /*url = "http://localhost:8001"*/,
+        path = "/v1")
 public interface ProductClientRest {
 
     @GetMapping

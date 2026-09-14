@@ -21,7 +21,9 @@ public class ProductServiceRestTemplateImpl implements ProductService{
 
     private final RestTemplate restTemplate;
 
-    private String urlBase = "http://localhost:8001/v1";
+    /*private String urlBase = "http://localhost:8001/v1";*/
+
+    private String urlBase = "http://ms-product/v1";
 
     private String urlId = urlBase + "/{id}";
 
