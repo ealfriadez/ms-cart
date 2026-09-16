@@ -10,7 +10,7 @@ spring:
 #    - default
 
   config:
-    import: optional:configserver:${CONFIG_SERVER:http://localhost:8888}
+    import: optional:configserver:${CONFIG_SERVER:http://ms-config-server:8888}
 #      - configserver: ${CONFIG_SERVER:http://ms_config_server:8888}
 
   cloud:
