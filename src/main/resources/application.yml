@@ -11,6 +11,7 @@ spring:
 
   config:
     import: optional:configserver:${CONFIG_SERVER:http://ms-config-server:8888}
+#      - vault://
 #      - configserver: ${CONFIG_SERVER:http://ms_config_server:8888}
 
   cloud:
@@ -18,6 +19,12 @@ spring:
       enabled: true
       username: ${CONFIG_SERVER_USERNAME:admin}
       password: ${CONFIG_SERVER_PASSWORD:admin}
+
+#    vault:
+#      enabled: true
+#      uri: ${VAULT:http://vault:8200}
+#      authentication: token
+#      token: ${VAULT_TOKEN:00000000-0000-0000-0000-000000000000}
 
   main:
     banner-mode: off
